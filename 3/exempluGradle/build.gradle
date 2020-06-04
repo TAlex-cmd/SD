@@ -1,0 +1,38 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+    id 'org.springframework.boot' version '2.2.1.RELEASE'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.3.50'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+group 'com.sd.laborator'
+version '0.6.9-BETA'
+
+repositories {
+    mavenCentral()
+}
+
+springBoot {
+    mainClassName = "com.sd.laborator.Hello"
+}
+
+configurations {
+    compileOnlyruntimeClasspath {
+        extendsFrom compileOnly
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    compileOnly "org.springframework.boot:spring-boot-devtools"
+    compile "org.json:json:20190722"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
